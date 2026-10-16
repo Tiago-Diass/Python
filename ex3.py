@@ -18,7 +18,6 @@ while querJogar == "S":
                 for _ in range(1):
                     n = randint(1,100)
                     numeroSecreto = (n)
-                    print(n)
         
         numInserido = int(input("Insira um número: "))
 
