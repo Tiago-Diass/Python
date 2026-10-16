@@ -36,3 +36,15 @@ for n in nums:
 for indice in range(len(nums)):
     if nums[indice] <= 10:
         print(nums[indice], end= " ")
+
+
+nums2 = nums
+nums.append(2)
+print(nums, nums2)
+
+nums3 = nums2.copy() # As listas são independentes
+nums2.append(1000)
+print(nums2, nums3)
+
+# Ordenar
+nums.sort
