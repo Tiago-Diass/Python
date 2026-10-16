@@ -1,6 +1,8 @@
 from random import randint
 import os
 
+pontuacoes = [100, 80, 60, 40, 30, 20, 10]
+pontuacao = 0
 numeroSecreto = 0
 numInserido = 0
 numTentativas = 0
@@ -29,22 +31,8 @@ while querJogar == "S":
             print(f"O numero Secreto é menor que {numInserido}")
 
         if numInserido == numeroSecreto:
-            if numTentativas == 1:
-                pontuacao = 100
-            elif numTentativas == 2:
-                pontuacao = 80
-            elif numTentativas == 3:
-                pontuacao = 60
-            elif numTentativas == 4:
-                pontuacao = 40
-            elif numTentativas == 5:
-                pontuacao = 30
-            elif numTentativas == 6:
-                pontuacao = 20
-            elif numTentativas == 7:
-                pontuacao = 10
+            pontuacao = pontuacoes[numTentativas - 1]
             print(f"Acertaste o número secreto em {numTentativas} tentativas e tiveste {pontuacao} pontos! ")
-            numeroSecreto = 0
             break
 
         if numInserido < numeroSecreto:
@@ -53,6 +41,7 @@ while querJogar == "S":
         if numTentativas >= 7:
             print(f"Perdeste! O numero era {numeroSecreto}")
         
-
+    numTentativas = 0
+    numeroSecreto = 0
     querJogar = (input("Deseja continuar a jogar(S/N): ")).upper()
     
