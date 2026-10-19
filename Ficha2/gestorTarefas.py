@@ -45,4 +45,5 @@ while resposta != 13:
                 rem_tarefa = int(input("Qual a posição: "))
                 tarefas.pop(rem_tarefa)
         case 6:
-            tarefas.remove(len)
+            for i in range len(tarefas):
+                tarefas.pop(i)
