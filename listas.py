@@ -35,11 +35,11 @@ print(lista1, lista2, lista3)
 
 # Ordenar
 lista1.sort()
+
 # Ordenar descendentemente
-
 lista1.sort(reverse=True)
-# Inverter a lista
 
+# Inverter a lista
 lista1.reverse()
 
 # Devolver o índice de um elemento
@@ -48,7 +48,8 @@ jogadores.index("J3") # 3
 jogadores.append("J5")
 
 #Nº de ocorrências do J5
-jogadores.count("J5")
+abcd = jogadores.count("J5")
+print(abcd)
 
 # LIST COMPREHENSION
 

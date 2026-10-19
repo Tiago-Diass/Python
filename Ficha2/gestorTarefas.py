@@ -3,10 +3,13 @@ os.system("clear")
 
 resposta = 0
 tarefas = ["abc", "def", "ghi"]
+tarefas2 = []
 ad_tarefa = ""
 pos_tarefa = 0
 rem_tarefa_nome = ""
 rem_tarefa = 0
+ocorrencia = ""
+n_ocorrencias = 0
 
 while resposta != 13:
     print("Oque quer fazer?")
@@ -16,6 +19,12 @@ while resposta != 13:
     print("4- Remover tarefa por nome")
     print("5- Remover ultima tarefa")
     print("6- Remover todas as tarefas")
+    print("7- Contar Ocorrências de tarefa")
+    print("8- Encontrar índice de tarefa")
+    print("9- Ordenar tarefas")
+    print("10- Inverter ordem das tarefas")
+    print("11- Copiar lista de tarefas")
+    print("12- Adicionar multiplas tarefas")
     print("13- Sair")
 
 
@@ -45,5 +54,27 @@ while resposta != 13:
                 rem_tarefa = int(input("Qual a posição: "))
                 tarefas.pop(rem_tarefa)
         case 6:
-            for i in range len(tarefas):
-                tarefas.pop(i)
+            tarefas.clear()
+        case 7:
+            ocorrencia = input("Qual a tarefa que queres ver: ")
+            n_ocorrencias = tarefas.count(ocorrencia)
+            print(f"Numero de occorencias da tarefa {ocorrencia}: {n_ocorrencias}")
+        case 8:
+            ocorrencia = input("Qual a tarefa que queres ver a posicao: ")
+            n_ocorrencias = tarefas.index(ocorrencia)
+            print(f"A tarefa {ocorrencia} está no posição: {n_ocorrencias}")
+        case 9:
+            tarefas.sort()
+            print("Ordem alterada")
+        case 10:
+            tarefas.sort(reverse=True)
+            print("Ordem alterada")
+        case 11:
+            tarefas2 = tarefas.copy
+            print("Tarefas2 foi criada")
+        case 12:
+            ad_tarefa = input("Quais as tarefas quer quer adicionar(separe com uma ,)")
+            tarefas.extend(ad_tarefa.split(','))
+            print("Tarefas adicionadas")
+
+print(tarefas)
