@@ -75,3 +75,9 @@ for aluno in escola.values():
     media_nota_aluno = round(soma_notas / len(aluno["notas"]),2)
 
     print(f"Aluno(a) {nome_aluno} teve média de {media_nota_aluno} valores")
+
+
+# Alunos do Porto
+escola_porto = {chave:valor for chave,valor in escola.items() if valor["cidade"] == "Porto"}
+
+print(escola_porto)
