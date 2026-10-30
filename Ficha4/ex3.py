@@ -36,3 +36,12 @@ print(biblioteca)
 biblioteca["livro1"]["disponivel"] = False
 print()
 print(biblioteca["livro1"])
+
+listaAutor1 = [livro["titulo"] for livro in biblioteca.values() if livro["autor"] == "Luciano Ramalho"]
+
+# for livro in biblioteca.values():
+#     if livro["autor"] == "Luciano Ramalho":
+#         listaAutor1.append(livro["titulo"])
+
+print(listaAutor1)
+
