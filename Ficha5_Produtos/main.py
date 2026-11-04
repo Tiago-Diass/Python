@@ -1,5 +1,4 @@
 import os
-
 #2
 products = []
 
@@ -40,11 +39,12 @@ def produtoEspecifico(nomeProduto):
 
 def menu(resposta):
     while (resposta != 5):
-        print("1 - Inserir novo Produto")
+        print("\n1 - Inserir novo Produto")
         print("2 - Listar os produtos existentes")
         print("3 - Atualizar o preço final de todos os produtos existentes na lista")
         print("4 - Imprimir os dados de um produto específico")
-        print("5 - Terminar a aplicação")
+        print("5 - Terminar a aplicação\n")
+
         resposta = int(input("Escolha uma opção: "))
 
         match (resposta):
@@ -52,11 +52,13 @@ def menu(resposta):
                 nomeProduto = input("Nome do produto: ")
                 precoProduto = float(input("Preco do produto: "))
                 ivaProduto = float(input("Qual o IVA do produto: "))
-
                 products.append(add(nomeProduto,precoProduto,ivaProduto))
             case 2:
                 for produto in products:
-                    print(produto)
+                    if "finalPrice" not in produto.keys():
+                        update_final_price(produto)
+                    print(print_product(produto))
+                x = input("Prima uma tecla para continuar ...")
             case 3:
                 for produto in products:
                     update_final_price(produto)
@@ -72,5 +74,3 @@ def menu(resposta):
 
 
 menu(resposta)
-
-print(products)
