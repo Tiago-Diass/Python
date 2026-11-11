@@ -58,7 +58,7 @@ def atacarInimigos(inimigosPartida):
     
     print(f"Inimigos da Partida Restantes: ")
     for i in range(len(inimigosPartida)):
-        print(f"{i+1} - {inimigosPartida[i]}")
+        print(f"{i} - {inimigosPartida[i]}")
 
     escolha = int(input("Qual o inimigo que queres atacar pelo numero: "))
     if escolha < 0 or escolha > len(inimigosPartida):
