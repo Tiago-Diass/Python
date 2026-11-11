@@ -108,7 +108,7 @@ def dadosInimigos(inimigosPartida):
 
 def usarPocao():
     if jogador["vida"] >= 100:
-        print("Não podes usar poção, tens mais de 100 pontos de vida")
+        print("Não podes usar poção, tens 100 ou mais pontos de vida")
     elif jogador["pocoesCura"] == 0:
         print("Não tens poções de cura!")
     else:
