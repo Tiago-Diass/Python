@@ -1,4 +1,4 @@
-from funcoes import imprimirLivro
+from funcoesFicha6 import imprimirLivro, adicionarLivro, atualizar_stock
 
 inventario = [
     {"id": 1, "titulo": "O Crime do Padre Amaro", "autor": "Eça de Queirós", "quantidade": 14, "preco": 15.5},
@@ -24,6 +24,10 @@ def app():
         match (resposta):
             case 1:
                 imprimirLivro(inventario)
-            
+            case 2:
+                adicionarLivro(inventario)
+            case 3:
+                id = int(input("Digite o ID do livro a ser atualizado: "))
+                atualizar_stock(id, inventario)
 
 app()
