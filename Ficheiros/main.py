@@ -1,3 +1,5 @@
+import json
+
 f = open("Ficheiros/dados.txt", "r")
 lista = f.readlines()
 # print(lista)
@@ -19,3 +21,15 @@ with open("Ficheiros/nomes.txt", "w") as file:
 with open("Ficheiros/nomes.txt", "a") as file:
     file.write("Dinis\n")
     file.write("Davi\n")
+
+with open("Ficheiros/nomes.json", "r") as f:
+    dados = json.load(f)
+
+print(dados)
+nome = {"nome": "Maria Joana", "idade": 67}
+dados.append(nome)
+
+with open("Ficheiros/nomes.json", "w") as f:
+    json.dump(dados,f,indent=4)
+
+print(dados)
