@@ -21,11 +21,15 @@ def guardar_json(inventario):
 def carregar_json():
     if not exists(ficheiro_json):
         print("Ficheiro não encontrado... ")
+        sleep(3)
+        system("cls")
         return []
     else:
         with open(ficheiro_json, "r") as f:
             inventario = json.load(f)
             print("Inventário carregado com sucesso!")
+            sleep(3)
+            system("cls")
             return inventario
 
 @meu_decorador
