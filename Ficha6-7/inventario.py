@@ -1,6 +1,5 @@
 from funcoesFicha6 import *
-from time import sleep
-from os import system
+
 livros = []
 
 while True:
@@ -8,28 +7,16 @@ while True:
     match op:
         case 1:
             view(livros)
-            sleep(3)
-            system("cls")
         case 2:
             add(livros)
-            sleep(3)
-            system("cls")
         case 3:
             update_stock(livros)
-            sleep(3)
-            system("cls")
         case 4:
             remove(livros)
-            sleep(3)
-            system("cls")
         case 5:
             search_by_author_or_title(livros)
-            sleep(3)
-            system("cls")
         case 6:
             report(livros)
-            sleep(3)
-            system("cls")
         case 7:
             break
 
