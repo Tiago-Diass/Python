@@ -20,6 +20,8 @@ while True:
         case 7:
             visualizar_log()
         case 8:
+            carregar_json(livros)
+        case 9:
             break
 
 print("Aplicação finalizada!")

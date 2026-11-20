@@ -18,8 +18,21 @@ def guardar_json(inventario):
     with open(ficheiro_json, "w") as f:
         json.dump(inventario, f, indent=4)
 
+def carregar_json():
+    if not exists(ficheiro_json):
+        print("Ficheiro não encontrado... ")
+        return []
+    else:
+        with open(ficheiro_json, "r") as f:
+            inventario = json.load(f)
+            print("Inventário carregado com sucesso!")
+            return inventario
+
 @meu_decorador
-def visualizar_log():
+def visualizar_log() -> None:
+    """
+    Função que permite visualizar o conteúdo do ficheiro de log.
+    """
     if not exists(ficheiro_log):
         print("Ficheiro não encontrado... ")
     else:
@@ -34,7 +47,7 @@ def registrar_log(mensagem):
     return f"{data} - {mensagem}\n"
 
 @meu_decorador
-def view(inventario):
+def view(inventario:list):
     if len(inventario) == 0:
         print("Não há livros no inventário atual!")
     else:
@@ -126,6 +139,7 @@ def menu():
     print("5- Pesquisar livros por autor ou título")
     print("6- Valor atual em stock")
     print("7- Consultar log")
-    print("8- Sair")
+    print("8- Carregar inventário")
+    print("9- Sair")
     op = int(input("\nEscolha uma opção: "))
     return op
