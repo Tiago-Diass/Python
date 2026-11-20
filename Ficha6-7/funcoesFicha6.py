@@ -1,13 +1,11 @@
+from genericpath import exists
 from time import sleep
 from os import system
 from datetime import datetime
+import json
 
 ficheiro_log = "Ficha6-7/inventario.log"
-
-def registrar_log(mensagem):
-    data = datetime.now()
-    data = data.now().strftime("%d-%m-%Y, %H:%M:%S")
-    return f"{data} - {mensagem}\n"
+ficheiro_json = "Ficha6-7/inventario.json"
 
 def meu_decorador(funcao):
     def wrapper(*args, **kwargs):
@@ -15,6 +13,25 @@ def meu_decorador(funcao):
         sleep(3)
         system("cls")
     return wrapper
+
+def guardar_json(inventario):
+    with open(ficheiro_json, "w") as f:
+        json.dump(inventario, f, indent=4)
+
+@meu_decorador
+def visualizar_log():
+    if not exists(ficheiro_log):
+        print("Ficheiro não encontrado... ")
+    else:
+        with open(ficheiro_log, "r") as f:
+            conteudo = f.readlines()
+            for linha in conteudo:
+                print(linha.strip())    
+
+def registrar_log(mensagem):
+    data = datetime.now()
+    data = data.now().strftime("%d-%m-%Y, %H:%M:%S")
+    return f"{data} - {mensagem}\n"
 
 @meu_decorador
 def view(inventario):
@@ -44,6 +61,7 @@ def add(inventario: list):
     with open(ficheiro_log, "a") as f:
         mensagem = f"Livro adicionado com sucesso: {titulo} ({livro['id']})"
         f.write(registrar_log(mensagem))
+    guardar_json(inventario)
 
 @meu_decorador
 def update_stock(inventario):
@@ -56,8 +74,9 @@ def update_stock(inventario):
             livro["qtde"] = new_stock
             found = True
             with open(ficheiro_log, "a") as f:
-                    mensagem = f"Stock atualizado: {livro['titulo']} ({livro['id']}); Stock anterior: {stock_anterior}; Stock novo: {new_stock}"
-                    f.write(registrar_log(mensagem))
+                mensagem = f"Stock atualizado: {livro['titulo']} ({livro['id']}); Stock anterior: {stock_anterior}; Stock novo: {new_stock}"
+                f.write(registrar_log(mensagem))
+            guardar_json(inventario)
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
@@ -73,6 +92,7 @@ def remove(inventario: list):
             with open(ficheiro_log, "a") as f:
                 mensagem = f"Livro Removido: {livro['titulo']} ({livro['id']});"
                 f.write(registrar_log(mensagem))
+            guardar_json(inventario)
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
@@ -105,6 +125,7 @@ def menu():
     print("4- Remover livro")
     print("5- Pesquisar livros por autor ou título")
     print("6- Valor atual em stock")
-    print("7- Sair")
+    print("7- Consultar log")
+    print("8- Sair")
     op = int(input("\nEscolha uma opção: "))
     return op
