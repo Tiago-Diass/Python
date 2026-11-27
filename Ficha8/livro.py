@@ -15,7 +15,4 @@ class Livro:
         return False
 
     def devolver(self):
-        if self.estado == "emprestado":
-            self.estado = "disponivel"
-            return True
-        return False
+        self.estado = "disponivel"
